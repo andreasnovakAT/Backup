@@ -11,8 +11,6 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.Map;
 
 public class BackupApplication extends Application {
     private static String formatSize(long bytes) {
@@ -29,6 +27,7 @@ public class BackupApplication extends Application {
         stage.setTitle("Backup");
         stage.setScene(scene);
         stage.show();
+        stage.setMaximized(true);
 
         // Fetch files and log to console
         try {
@@ -48,7 +47,7 @@ public class BackupApplication extends Application {
             System.out.println("Summary: " + numberOfFiles + " files, total size: " + formatSize(totalSize));
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error fetching files: " + e.getMessage());
         }
     }
 }
